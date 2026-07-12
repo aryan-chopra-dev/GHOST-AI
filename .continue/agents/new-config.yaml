@@ -1,0 +1,19 @@
+name: Main Config
+version: 1.0.0
+schema: v1
+models:
+  - name: NVIDIA NeMo Tro 3 Ultra
+    provider: nvidia
+    model: nvidia/nemotron-3-ultra-550b-a55b
+    apiBase: https://integrate.api.nvidia.com/v1
+    apiKey: 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
+    completionOptions:
+      temperature: 1
+      topP: 0.95
+      maxTokens: 16384
+    requestOptions:
+      extraBodyProperties:
+        chat_template_kwargs:
+          enable_thinking: true
+        reasoning_budget: 16384
+
