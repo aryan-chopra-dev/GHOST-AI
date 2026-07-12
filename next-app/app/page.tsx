@@ -17,12 +17,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-  DialogFooter,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { EditorNavbar } from "@/components/editor/editor-navbar"
+import { ProjectSidebar } from "@/components/editor/project-sidebar"
 import { 
   Palette, 
   Terminal, 
@@ -32,9 +33,7 @@ import {
   FileText, 
   Code,
   Layout,
-  ExternalLink,
   Settings,
-  Sparkles,
   CheckCircle2,
   AlertCircle
 } from "lucide-react"
@@ -44,6 +43,7 @@ export default function Home() {
   const [demoInput, setDemoInput] = useState<string>("")
   const [demoTextarea, setDemoTextarea] = useState<string>("")
   const [dialogOpen, setDialogOpen] = useState<boolean>(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
 
   // Color Token Mapping for display
   const colorTokens = [
@@ -60,31 +60,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-base text-copy-primary font-sans flex flex-col selection:bg-brand/30 selection:text-brand-foreground">
       {/* Top Navigation */}
-      <header className="border-b border-surface-border bg-surface/50 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-brand/10 rounded-lg border border-brand/20">
-            <Sparkles className="size-5 text-brand" />
-          </div>
-          <div>
-            <h1 className="font-heading text-lg font-semibold tracking-tight">Ghost AI</h1>
-            <p className="text-xs text-copy-muted">System Design Workspace</p>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1 bg-surface border border-surface-border rounded-full text-xs">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-copy-muted font-medium">Design System (01-design-system.md)</span>
-          </div>
-          <Button variant="outline" size="sm" className="gap-1.5" onClick={() => window.open("https://github.com", "_blank")}>
-            <span>GitHub</span>
-            <ExternalLink className="size-3" />
-          </Button>
-        </div>
-      </header>
+      <EditorNavbar
+        isSidebarOpen={isSidebarOpen}
+        onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
+      />
+
+      {/* Project Sidebar */}
+      <ProjectSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        onNewProject={() => alert("New project configuration triggered.")}
+      />
+
+      {/* Backdrop overlay when sidebar is open */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 z-20 bg-black/40 backdrop-blur-xs transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
 
       {/* Main Workspace Dashboard */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -240,7 +234,7 @@ export default function Home() {
                       />
                       {demoInput && (
                         <p className="text-[10px] text-brand italic">
-                          Live value: "{demoInput}"
+                          Live value: &quot;{demoInput}&quot;
                         </p>
                       )}
                     </div>
