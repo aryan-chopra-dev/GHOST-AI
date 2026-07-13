@@ -14,7 +14,7 @@ change.
 ## Completed
 
 - 01-design-system.md: Design system and UI primitive components installed, configured with Shadcn UI, Lucide React, and mapped dark theme variables.
-- 02-editor.md: Base editor layout chrome (Editor Navbar and Project Sidebar) implemented and standard Dialog border-radius styling standard configured.
+- 02-editor.md: Base editor layout chrome (Editor Navbar and Project Sidebar) implemented, standard Dialog border-radius styling configured, and accessibility attributes connected.
 
 ## In Progress
 
