@@ -35,4 +35,4 @@ change.
 
 ## Session Notes
 
-- [Context needed to resume work in the next session]
+- Restructured the repository by moving the Next.js app contents from `next-app/` to the root directory, and successfully pushed this updated structure to the `development` branch on GitHub.
