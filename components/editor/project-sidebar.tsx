@@ -82,7 +82,8 @@ export function ProjectSidebar({ isOpen, onClose, onNewProject }: ProjectSidebar
       </Tabs>
 
       {/* Sidebar Footer: New Project Button */}
-      <div className="p-4 border-t border-surface-border bg-surface/50">
+      {onNewProject && (
++      <div className="p-4 border-t border-surface-border bg-surface/50">
         <Button
           onClick={onNewProject}
           className="w-full gap-2 rounded-xl bg-brand hover:bg-brand/90 text-white font-medium text-xs py-2 h-9 transition-colors cursor-pointer"
@@ -90,7 +91,7 @@ export function ProjectSidebar({ isOpen, onClose, onNewProject }: ProjectSidebar
           <Plus className="size-4" />
           New Project
         </Button>
-      </div>
+      </div>)}
     </aside>
   )
 }
