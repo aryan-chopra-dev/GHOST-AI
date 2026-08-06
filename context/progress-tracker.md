@@ -9,11 +9,12 @@ change.
 
 ## Current Goal
 
-- Design system and UI primitive components configured (01-design-system.md)
+- Setup authentication and projects layer (Clerk & Prisma configuration)
 
 ## Completed
 
 - 01-design-system.md: Design system and UI primitive components installed, configured with Shadcn UI, Lucide React, and mapped dark theme variables.
+- 02-editor.md: Base editor layout chrome (Editor Navbar and Project Sidebar) implemented, standard Dialog border-radius styling configured, and accessibility attributes connected.
 
 ## In Progress
 
@@ -34,4 +35,4 @@ change.
 
 ## Session Notes
 
-- [Context needed to resume work in the next session]
+- Restructured the repository by moving the Next.js app contents from `next-app/` to the root directory, and successfully pushed this updated structure to the `development` branch on GitHub.
